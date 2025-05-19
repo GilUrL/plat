@@ -1,0 +1,185 @@
+        :root {
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --plant-primary: #2e8b57;
+            --plant-secondary: #3cb371;
+
+            --primary-green: #2e8b57;
+            --light-green: #3cb371;
+            --dark-green: #1e5631;
+            --bg-light: #f8f9fa;
+        }
+
+        .navbar-plant {
+            background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 1rem;
+        }
+
+        .navbar-brand-plant {
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: white !important;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand-plant .logo-icon {
+            font-size: 1.8rem;
+            margin-right: 10px;
+            color: #a4de9b;
+        }
+
+        .nav-link-plant {
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            margin: 0 0.15rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link-plant:hover,
+        .nav-link-plant:focus {
+            color: white !important;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .nav-link-plant.active {
+            color: white !important;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-link-plant.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background-color: #a4de9b;
+            border-radius: 3px;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            font-size: 0.6rem;
+            background-color: #ff6b6b;
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .dropdown-menu-plant {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+        }
+
+        .dropdown-item-plant {
+            border-radius: 6px;
+            margin: 2px 5px;
+            transition: all 0.2s;
+        }
+
+        .dropdown-item-plant:hover {
+            background-color: #e8f5e9;
+            color: var(--primary-green);
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 250px;
+        }
+
+        .search-input {
+            background-color: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: white;
+            padding-left: 35px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            background-color: rgba(255, 255, 255, 0.25);
+            box-shadow: none;
+            color: white;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        body {
+            background-color: #f5f7fb;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        .plant-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            background-color: white;
+            overflow: hidden;
+        }
+
+        .sensor-value {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .sensor-unit {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+
+        .sensor-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 250px;
+            width: 100%;
+        }
+
+        .plant-status {
+            border-left: 4px solid var(--plant-primary);
+        }
+
+        .alert-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }

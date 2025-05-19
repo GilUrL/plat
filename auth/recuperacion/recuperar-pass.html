@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Contraseña - PlantMonitor</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-green: #2e8b57;
+            --light-green: #3cb371;
+            --dark-green: #1e5631;
+            --bg-light: #f5f7fb;
+        }
+        
+        body {
+            background-color: var(--bg-light);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .auth-card {
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(46, 139, 87, 0.15);
+            overflow: hidden;
+            max-width: 420px;
+            width: 100%;
+        }
+        
+        .auth-header {
+            background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .auth-logo {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #a4de9b;
+        }
+        
+        .auth-body {
+            padding: 2rem;
+            background-color: white;
+        }
+        
+        .form-control {
+            border-radius: 8px;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .form-control:focus {
+            border-color: var(--light-green);
+            box-shadow: 0 0 0 0.25rem rgba(60, 179, 113, 0.25);
+        }
+        
+        .btn-plant {
+            background-color: var(--primary-green);
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-plant:hover {
+            background-color: var(--dark-green);
+            transform: translateY(-2px);
+        }
+        
+        .auth-footer {
+            text-align: center;
+            padding-top: 1.5rem;
+            color: #6c757d;
+        }
+        
+        .auth-link {
+            color: var(--primary-green);
+            font-weight: 500;
+            text-decoration: none;
+        }
+        
+        .auth-link:hover {
+            color: var(--dark-green);
+            text-decoration: underline;
+        }
+        
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .success-icon {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="auth-card mx-auto">
+            <div class="auth-header">
+                <i class="bi bi-flower1 auth-logo"></i>
+                <h3>Recuperar contraseña</h3>
+                <p class="mb-0">Te enviaremos un enlace para restablecerla</p>
+            </div>
+            
+            <div class="auth-body">
+                <div id="resetForm">
+                    <div class="mb-4">
+                        <p>Ingresa el correo electrónico asociado a tu cuenta y te enviaremos instrucciones para restablecer tu contraseña.</p>
+                    </div>
+                    
+                    <form id="passwordResetForm">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" id="email" placeholder="tu@email.com" required>
+                        </div>
+                        
+                        <div class="d-grid gap-2 mb-3">
+                            <button type="submit" class="btn btn-plant text-white">
+                                <i class="bi bi-envelope me-2"></i> Enviar enlace
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="auth-footer">
+                        <a href="login.html" class="auth-link">
+                            <i class="bi bi-arrow-left me-1"></i> Volver a iniciar sesión
+                        </a>
+                    </div>
+                </div>
+                
+                <div id="successMessage" class="success-message">
+                    <i class="bi bi-check-circle success-icon"></i>
+                    <h4>¡Correo enviado!</h4>
+                    <p>Hemos enviado un enlace para restablecer tu contraseña a tu correo electrónico.</p>
+                    <p>Si no lo ves en tu bandeja de entrada, revisa la carpeta de spam.</p>
+                    <a href="login.html" class="btn btn-outline-primary mt-3">
+                        Volver al inicio de sesión
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Simulación de envío de formulario
+        document.getElementById('passwordResetForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Mostrar mensaje de éxito
+            document.getElementById('resetForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Aquí iría la lógica real para enviar el correo de recuperación
+            // Por ejemplo, una llamada AJAX a tu backend
+        });
+    </script>
+</body>
+</html>
