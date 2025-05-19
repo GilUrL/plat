@@ -2,9 +2,9 @@
 
 class DatabaseDB {
     private $host = 'localhost';
-    private $nombre_bd = 'plat';
-    private $usuario = 'root';
-    private $password = '';
+    private $nombre_bd = 'gilurbina_plantatech';
+    private $usuario = 'gilurbina_plantatech';
+    private $password = 'Zeldris@22';
 
     public function __construct(){
       
