@@ -49,17 +49,22 @@ switch ($resource) {
             echo json_encode(["error" => "Metodo no permitido"]);
         }
         break;
-    case 'registrar_lecturas':
-        if ($method === 'POST') {
+case 'registrar_lecturas':
+    if ($method === 'POST') {
+        try {
             require_once './controller/macetas/macetasController.php';
             $controller = new MacetasController($resource, $input);
             $controller->peticiones();
-        
-        } else {
-            http_response_code(405);
-            echo json_encode(["error" => "Metodo no permitido"]);
+        } catch (Throwable $e) {
+            http_response_code(500);
+            echo json_encode(["error" => "Error interno: " . $e->getMessage()]);
         }
-        break;
+    } else {
+        http_response_code(405);
+        echo json_encode(["error" => "Metodo no permitido"]);
+    }
+    break;
+
     default:
         http_response_code(404);
         echo json_encode(["error" => "Recurso no encontrado"]);
