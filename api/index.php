@@ -46,7 +46,7 @@ switch ($resource) {
         break;
     case 'registrar_lecturas':
         if ($method === 'POST') {
-            require_once './controller/macetas/MacetasController.php';
+            require_once '/controller/macetas/macetasController.php';
             $controller = new MacetasController($resource, $input);
             $controller->peticiones();
         } else {

@@ -1,6 +1,6 @@
 <?php
 require_once './helper/convertirJSON.php';
-require_once './model/macetas/macetasModel.php';
+require_once './model/macetas/MacetasModel.php';
 
 class MacetasController extends MacetasModel
 {
