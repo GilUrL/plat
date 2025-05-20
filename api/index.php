@@ -5,9 +5,6 @@
 * Redirecciona las peticiones a los controladores correspondientes
 */
 
-
-
-
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
@@ -32,7 +29,6 @@ switch ($resource) {
             require_once './controller/usuarios/usuariosController.php';
             $controller = new UsuariosController($resource, $input);
             $controller->peticiones();
-        
         } else {
             http_response_code(405);
             echo json_encode(["error" => "Metodo no permitido"]);
@@ -43,27 +39,21 @@ switch ($resource) {
             require_once './controller/usuarios/usuariosController.php';
             $controller = new UsuariosController($resource, $input);
             $controller->peticiones();
-        
         } else {
             http_response_code(405);
             echo json_encode(["error" => "Metodo no permitido"]);
         }
         break;
-case 'registrar_lecturas':
-    if ($method === 'POST') {
-        try {
+    case 'registrar_lecturas':
+        if ($method === 'POST') {
             require_once './controller/macetas/macetasController.php';
             $controller = new MacetasController($resource, $input);
             $controller->peticiones();
-        } catch (Throwable $e) {
-            http_response_code(500);
-            echo json_encode(["error" => "Error interno: " . $e->getMessage()]);
+        } else {
+            http_response_code(405);
+            echo json_encode(["error" => "Metodo no permitido"]);
         }
-    } else {
-        http_response_code(405);
-        echo json_encode(["error" => "Metodo no permitido"]);
-    }
-    break;
+        break;
 
     default:
         http_response_code(404);
