@@ -214,4 +214,118 @@ function actualizarLecturasActuales(lectura) {
         soilBadge.className = 'badge bg-success';
         soilBadge.textContent = 'Óptimo';
     }
+
+    // ACTUALIZAR ALERTAS Y RECOMENDACIONES
+    const alertContainer = document.getElementById('alertas-contenedor');
+    alertContainer.innerHTML = ''; // Limpiar
+
+    // Humedad del suelo
+    if (soilHumidity < 40) {
+        alertContainer.innerHTML += `
+            <div class="alert alert-warning d-flex align-items-center">
+                <div class="alert-icon bg-warning text-white me-3">
+                    <i class="bi bi-droplet"></i>
+                </div>
+                <div>
+                    <strong>Humedad del suelo baja</strong> - Considera regar la planta
+                </div>
+            </div>`;
+    } else if (soilHumidity > 60) {
+        alertContainer.innerHTML += `
+            <div class="alert alert-danger d-flex align-items-center">
+                <div class="alert-icon bg-danger text-white me-3">
+                    <i class="bi bi-droplet-half"></i>
+                </div>
+                <div>
+                    <strong>Humedad del suelo alta</strong> - Evita exceso de riego
+                </div>
+            </div>`;
+    } else {
+        alertContainer.innerHTML += `
+            <div class="alert alert-success d-flex align-items-center">
+                <div class="alert-icon bg-success text-white me-3">
+                    <i class="bi bi-droplet"></i>
+                </div>
+                <div>
+                    <strong>Humedad del suelo óptima</strong> - Todo está bien
+                </div>
+            </div>`;
+    }
+
+    // Temperatura
+    if (temperature < 18) {
+        alertContainer.innerHTML += `
+            <div class="alert alert-warning d-flex align-items-center">
+                <div class="alert-icon bg-warning text-white me-3">
+                    <i class="bi bi-thermometer-snow"></i>
+                </div>
+                <div>
+                    <strong>Temperatura baja</strong> - Considera ubicar la planta en un lugar más cálido
+                </div>
+            </div>`;
+    } else if (temperature > 28) {
+        alertContainer.innerHTML += `
+            <div class="alert alert-danger d-flex align-items-center">
+                <div class="alert-icon bg-danger text-white me-3">
+                    <i class="bi bi-thermometer-sun"></i>
+                </div>
+                <div>
+                    <strong>Temperatura alta</strong> - Verifica que la planta no esté expuesta al sol directo
+                </div>
+            </div>`;
+    } else {
+        alertContainer.innerHTML += `
+            <div class="alert alert-success d-flex align-items-center">
+                <div class="alert-icon bg-success text-white me-3">
+                    <i class="bi bi-thermometer"></i>
+                </div>
+                <div>
+                    <strong>Temperatura óptima</strong> - La temperatura es ideal para tu planta
+                </div>
+            </div>`;
+    }
+
+    // Luz
+    if (light < 300) {
+        alertContainer.innerHTML += `
+            <div class="alert alert-warning d-flex align-items-center">
+                <div class="alert-icon bg-warning text-white me-3">
+                    <i class="bi bi-sunrise"></i>
+                </div>
+                <div>
+                    <strong>Poca luz</strong> - Reubica la planta a un lugar más iluminado
+                </div>
+            </div>`;
+    } else if (light > 1200) {
+        alertContainer.innerHTML += `
+            <div class="alert alert-danger d-flex align-items-center">
+                <div class="alert-icon bg-danger text-white me-3">
+                    <i class="bi bi-brightness-high"></i>
+                </div>
+                <div>
+                    <strong>Exceso de luz</strong> - Considera sombra parcial
+                </div>
+            </div>`;
+    } else {
+        alertContainer.innerHTML += `
+            <div class="alert alert-info d-flex align-items-center">
+                <div class="alert-icon bg-info text-white me-3">
+                    <i class="bi bi-sun"></i>
+                </div>
+                <div>
+                    <strong>Luz adecuada</strong> - La planta recibe suficiente luz
+                </div>
+            </div>`;
+    }
+
+    // Simulación de último riego
+    alertContainer.innerHTML += `
+        <div class="alert alert-primary d-flex align-items-center">
+            <div class="alert-icon bg-primary text-white me-3">
+                <i class="bi bi-clock-history"></i>
+            </div>
+            <div>
+                <strong>Último riego:</strong> Hace 2 días
+            </div>
+        </div>`;
 }
