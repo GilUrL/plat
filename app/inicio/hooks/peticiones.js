@@ -1,17 +1,14 @@
 import { mensajes } from "../../../hooks/mensajes.js";
 const apiUrl = "https://plantatech.ultrasoftware.pro/api/";
 
-// Variables globales de gráficos
 let soilChart, tempHumidityChart, lightChart;
 
-// Ejecutar al cargar la página
 document.addEventListener("DOMContentLoaded", function () {
     const horas = [];
     for (let i = 0; i < 24; i++) {
         horas.push(i + ':00');
     }
 
-    // Inicializar gráficos
     const soilCtx = document.getElementById('soilChart').getContext('2d');
     soilChart = new Chart(soilCtx, {
         type: 'line',
@@ -122,14 +119,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Obtener correo del localStorage y hacer la primera petición
+    // Obtener correo del localStorage
     let correo = localStorage.getItem('correo');
     if (correo) {
         const datos = { correo };
         obtener_lecturas(datos);
 
-        // Actualizar cada 5 segundos
-        setInterval(() => obtener_lecturas(datos), 5000);
+        setInterval(() => obtener_lecturas(datos), 2000);
     } else {
         mensajes("No se encontró correo en localStorage", "error", "", 4000);
     }
