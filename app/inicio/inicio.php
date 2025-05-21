@@ -516,6 +516,8 @@ verificarSesion();
         // Actualizar cada 5 segundos (simulación)
         setInterval(updateSensorValues, 5000);
     </script>
+
+    <script type="module" src="js/inicio.js"></script>
 </body>
 
 </html>
