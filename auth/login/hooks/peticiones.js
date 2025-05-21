@@ -13,6 +13,7 @@ export const iniciar_sesion = (datos) => {
             if (respuesta.status == true) {
                 mensajes(respuesta.msg, "success", "", 4000);
                 $("#iniciar_sesion")[0].reset();
+                localStorage.setItem('correo', datos.correo);
                 window.location.href = '../../app/inicio/inicio.php';
             } else {
                 mensajes(respuesta.msg, "error", "", 4000)
