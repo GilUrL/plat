@@ -50,7 +50,7 @@ verificarSesion();
                         <input class="form-control search-input" type="search" placeholder="Buscar planta...">
                     </div>
 
-                    <div class="dropdown me-3">
+                    <!-- <div class="dropdown me-3">
                         <a class="btn btn-link position-relative p-0" href="#" role="button" data-bs-toggle="dropdown">
                             <i class="bi bi-bell text-white fs-5"></i>
                             <span class="notification-badge badge rounded-pill">3</span>
@@ -103,7 +103,7 @@ verificarSesion();
                             </li>
                             <li><a class="dropdown-item dropdown-item-plant text-center" href="#">Ver todas</a></li>
                         </ul>
-                    </div>
+                    </div> -->
 
                     <div class="dropdown">
                         <a class="d-flex align-items-center text-decoration-none dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
