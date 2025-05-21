@@ -8,3 +8,5 @@ $(document).ready(function () {
     console.log(prueba);
     obtener_lecturas(datos);
 });
+
+
