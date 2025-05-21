@@ -107,8 +107,11 @@ verificarSesion();
 
                     <div class="dropdown">
                         <a class="d-flex align-items-center text-decoration-none dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="user-avatar me-2">
-                            <span class="text-white">Usuario</span>
+                            <img src="#" class="user-avatar me-2">
+                            <span class="text-white">
+                                <?php echo htmlspecialchars($_SESSION['usuario']['nombre'] ?? 'Usuario'); ?>
+                            </span>
+
                         </a>
                         <ul class="dropdown-menu dropdown-menu-plant dropdown-menu-end">
                             <li>
