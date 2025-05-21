@@ -1,18 +1,17 @@
 import { mensajes } from "../../../hooks/mensajes.js";
-const apiUrl = "https://plantatech.ultrasoftware.pro/api/"; //cambiar para el hosting
+const apiUrl = "https://plantatech.ultrasoftware.pro/api/";
 
-
-
-// Inicializar arrays vacíos
+// Variables globales de gráficos
 let soilChart, tempHumidityChart, lightChart;
 
+// Ejecutar al cargar la página
 document.addEventListener("DOMContentLoaded", function () {
     const horas = [];
     for (let i = 0; i < 24; i++) {
         horas.push(i + ':00');
     }
 
-    // Inicializar gráficos vacíos
+    // Inicializar gráficos
     const soilCtx = document.getElementById('soilChart').getContext('2d');
     soilChart = new Chart(soilCtx, {
         type: 'line',
@@ -123,13 +122,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Llamada inicial + actualización cada 5 segundos
-    obtener_lecturas({ id_usuario: 1 }); // <-- Reemplaza con los datos requeridos
-    setInterval(() => {
-        obtener_lecturas({ id_usuario: 1 });
-    }, 5000);
+    // Obtener correo del localStorage y hacer la primera petición
+    let correo = localStorage.getItem('correo');
+    if (correo) {
+        const datos = { correo };
+        obtener_lecturas(datos);
+
+        // Actualizar cada 5 segundos
+        setInterval(() => obtener_lecturas(datos), 5000);
+    } else {
+        mensajes("No se encontró correo en localStorage", "error", "", 4000);
+    }
 });
 
+// Función para obtener lecturas
 function obtener_lecturas(datos) {
     $.ajax({
         url: apiUrl + "obtener_lecturas",
@@ -138,9 +144,8 @@ function obtener_lecturas(datos) {
         contentType: "application/json",
         dataType: "json",
         success: function (respuesta) {
-            if (respuesta.status == true) {
+            if (respuesta.status === true) {
                 const lecturas = respuesta.datos;
-
                 const horas = [];
                 const temperatura = [];
                 const humedadAire = [];
@@ -158,11 +163,11 @@ function obtener_lecturas(datos) {
                 actualizarGraficos(horas, temperatura, humedadAire, humedadSuelo, nivelLuz);
                 actualizarLecturasActuales(lecturas[lecturas.length - 1]);
             } else {
-                alert("Error: " + respuesta.msg);
+                mensajes(respuesta.msg, "error", "", 4000);
             }
         },
         error: function (xhr, status, error) {
-            console.error("Estado:", status);
+            console.error("Error AJAX:", status, error);
         }
     });
 }
