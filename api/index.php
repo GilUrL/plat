@@ -44,6 +44,16 @@ switch ($resource) {
             echo json_encode(["error" => "Metodo no permitido"]);
         }
         break;
+    case 'obtener_lecturas':
+        if ($method === 'POST') {
+            require_once './controller/macetas/macetasController.php';
+            $controller = new MacetasController($resource, $input);
+            $controller->peticiones();
+        } else {
+            http_response_code(405);
+            echo json_encode(["error" => "Metodo no permitido"]);
+        }
+        break;
     case 'registrar_lecturas':
         if ($method === 'POST') {
             // Debug: Verificar si el archivo existe

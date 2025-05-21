@@ -93,7 +93,7 @@ class MacetasModel extends DatabaseDB
                     "cod" => 409
                 ];
             }
-            date_default_timezone_set('America/Mexico_City'); 
+            date_default_timezone_set('America/Mexico_City');
             $conn = $this->connBD();
             $sql = "INSERT INTO `lecturas`(`nivel_luz`, `humedad_aire`, `temperatura`, `humedad_suelo`, `hora_registro`, `fecha_registro`, `id_usuario`) 
             VALUES (:luz,:humedad_aire,:temperatura,:humedad_suelo,:hora_registro,:fecha_registro,:id_usuario)";
@@ -125,6 +125,49 @@ class MacetasModel extends DatabaseDB
             }
         } catch (PDOException $e) {
             error_log("Error en nuevaLectura: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    protected function traerLectura()
+    {
+        try {
+            $conn = $this->connBD();
+
+            $sql = "SELECT 
+            nivel_luz, 
+            humedad_aire, 
+            temperatura, 
+            humedad_suelo, 
+            hora_registro, 
+            fecha_registro 
+            FROM lecturas 
+            INNER JOIN usuario ON usuario.id_usuario = lecturas.id_usuario 
+            WHERE correo = :correo 
+            ORDER BY fecha_registro DESC, hora_registro DESC 
+            LIMIT 1;";
+
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([
+                ':correo' => $this->correo
+            ]);
+            $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if ($res) {
+                return [
+                    "status" => true,
+                    "msg" => "Lecturas obtenidas ",
+                    "datos" => $res,
+                    "cod" => 200
+                ];
+            }
+            return [
+                "status" => true,
+                "msg" => "La lectura no fue encontrada",
+                "datos" => null,
+                "cod" => 500
+            ];
+        } catch (PDOException $e) {
+            error_log("Error en traerLectura: " . $e->getMessage());
             return false;
         }
     }

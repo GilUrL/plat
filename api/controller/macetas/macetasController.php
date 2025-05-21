@@ -22,6 +22,9 @@ class MacetasController extends MacetasModel
             case 'registrar_lecturas':
                 $this->registroLectura();
                 break;
+            case 'obtener_lecturas':
+                $this->obtenerLecturas();
+                break;
             default:
                 http_response_code(404);
                 echo json_encode(["error" => "Petición no reconocida"]);
@@ -32,6 +35,24 @@ class MacetasController extends MacetasModel
     private function registroLectura()
     {
         $lectura = $this->nuevaLectura();
+        if ($lectura) {
+            $res = [
+                "status" => $lectura['status'] ?? "no se encontro status del model",
+                "msg" => $lectura['msg'] ?? "no se encontro mensaje del model",
+                "datos" => $lectura['datos'] ?? "model no proporciono datos"
+            ];
+        } else {
+            $res = [
+                "status" => $lectura['status'] ?? "no se encontro status del model",
+                "msg" => $lectura['msg'] ?? "no se encontro mensaje del model",
+                "datos" => $lectura['datos'] ?? "model no proporciono datos"
+            ];
+        }
+        convertirJSON($res);
+    }
+    private function obtenerLecturas()
+    {
+        $lectura = $this->traerLectura();
         if ($lectura) {
             $res = [
                 "status" => $lectura['status'] ?? "no se encontro status del model",
