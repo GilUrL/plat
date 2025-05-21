@@ -290,41 +290,13 @@ verificarSesion();
             <!-- Alertas y Recomendaciones -->
             <div class="col-lg-6">
                 <div class="plant-card p-4 h-100">
-                    <h5 class="fw-bold mb-3"><i class="bi bi-exclamation-triangle me-2"></i>Alertas y Recomendaciones</h5>
-                    <div class="alert alert-warning d-flex align-items-center">
-                        <div class="alert-icon bg-warning text-white me-3">
-                            <i class="bi bi-droplet"></i>
-                        </div>
-                        <div>
-                            <strong>Humedad del suelo baja</strong> - Considera regar la planta
-                        </div>
-                    </div>
-                    <div class="alert alert-success d-flex align-items-center">
-                        <div class="alert-icon bg-success text-white me-3">
-                            <i class="bi bi-thermometer"></i>
-                        </div>
-                        <div>
-                            <strong>Temperatura óptima</strong> - La temperatura es ideal para tu planta
-                        </div>
-                    </div>
-                    <div class="alert alert-info d-flex align-items-center">
-                        <div class="alert-icon bg-info text-white me-3">
-                            <i class="bi bi-sun"></i>
-                        </div>
-                        <div>
-                            <strong>Luz adecuada</strong> - La planta recibe suficiente luz
-                        </div>
-                    </div>
-                    <div class="alert alert-primary d-flex align-items-center">
-                        <div class="alert-icon bg-primary text-white me-3">
-                            <i class="bi bi-clock-history"></i>
-                        </div>
-                        <div>
-                            <strong>Último riego:</strong> Hace 2 días
-                        </div>
-                    </div>
+                    <h5 class="fw-bold mb-3">
+                        <i class="bi bi-exclamation-triangle me-2"></i>Alertas y Recomendaciones
+                    </h5>
+                    <div id="alertas-contenedor"></div> <!-- Aquí se insertarán dinámicamente las alertas -->
                 </div>
             </div>
+
         </div>
     </div>
     <script src="../../assets/jquery/jquery.js"></script>
