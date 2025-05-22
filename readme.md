@@ -58,14 +58,16 @@ Contraseña: Zeldris@22
 http://plat.test/api/registrar_lecturas
 ![Postman](img/endpoins.png)
 
-El formato de envio es JSON
+## Ejemplo de Datos de Sensores (JSON)
 
+Este es un ejemplo del formato que usa el sistema para recibir o almacenar datos de los sensores conectados (como luz, temperatura, humedad del aire y del suelo):
+
+```json
 {
     "correo": "gilurbina09@gmail.com",
     "nivel_luz": "20",
     "humedad_aire": "200",
     "temperatura": "499",
-    "humedad_suelo":"200"
+    "humedad_suelo": "200"
 }
-
 
