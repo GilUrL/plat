@@ -19,6 +19,7 @@ Se debe usar la simulacion de dominio en laragon para poder hacer pruebas locale
 
 1. Crear un nuevo proyecto en laragon y agregarle el nombre "plat"
 ![Crear proyecto](img/crear_rapida_sitio.png)
+
 Este proceso nos creara una carpeta en la ruta C:\laragon\www\plat
 
 2. Clonar el repositorio en la carpeta plat que se creo anteriormente
