@@ -1,21 +1,21 @@
-#PLANTATECH DASHBOARD
+# PLANTATECH DASHBOARD
 
-##Descripcion
+## Descripcion
 Hemos desarrollado un prototipo de dashboard para la gestion de nuestra maceta inteligente que se encuentra en fase de desarrollo.
 
-##Requisitos necesarios para ejecutar el proyecto:
+## Requisitos necesarios para ejecutar el proyecto:
 1. Clonar el repositorio.
 2. Servidor web local o hosting 
 3. Base de datos MySQL
 4. PHP 5.6 o superior
 5. Navegador web
 
-##Notas
+## Notas
 Solo se ha probado con Chrome 
 Solo se ha probado con Laragon 
 Se debe usar la simulacion de dominio en laragon para poder hacer pruebas locales, ya que el dominio es necesario para realizar las peticiones ajax correctamente
 
-##Pasos de instalacion local
+## Pasos de instalacion local
 
 1. Crear un nuevo proyecto en laragon y agregarle el nombre "plat"
 ![Crear proyecto](img/crear_rapida_sitio.png)
