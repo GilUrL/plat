@@ -9,6 +9,7 @@ Hemos desarrollado un prototipo de dashboard para la gestion de nuestra maceta i
 3. Base de datos MySQL
 4. PHP 5.6 o superior
 5. Navegador web
+6. Postman o cualquier otro cliente rest
 
 ## Notas
 Solo se ha probado con Chrome 

@@ -1,5 +1,6 @@
 import { mensajes } from "../../../hooks/mensajes.js";
-const apiUrl = "http://plat.test/api/"; //cambiar para el hosting
+//const apiUrl = "http://plat.test/api/"; //cambiar para local
+const apiUrl = "https://plantatech.ultrasoftware.pro/api/"; //cambiar para el hosting
 
 
 export const iniciar_sesion = (datos) => {
