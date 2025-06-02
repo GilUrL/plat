@@ -171,4 +171,49 @@ class MacetasModel extends DatabaseDB
             return false;
         }
     }
+    protected function traerLecturaTabla()
+    {
+        try {
+            $conn = $this->connBD();
+
+            $sql = "SELECT 
+        nivel_luz, 
+        humedad_aire, 
+        temperatura, 
+        humedad_suelo, 
+        hora_registro, 
+        fecha_registro 
+        FROM lecturas 
+        INNER JOIN usuario ON usuario.id_usuario = lecturas.id_usuario 
+        WHERE correo = :correo 
+        ORDER BY fecha_registro DESC, hora_registro DESC;"; 
+
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([
+                ':correo' => $this->correo
+            ]);
+            $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if ($res) {
+                return [
+                    "status" => true,
+                    "msg" => "Lecturas obtenidas",
+                    "datos" => $res,
+                    "cod" => 200
+                ];
+            }
+            return [
+                "status" => true,
+                "msg" => "No se encontraron lecturas",
+                "datos" => null,
+                "cod" => 500
+            ];
+        } catch (PDOException $e) {
+            error_log("Error en traerLectura: " . $e->getMessage());
+            return [
+                "status" => false,
+                "msg" => "Error al obtener las lecturas",
+                "cod" => 500
+            ];
+        }
+    }
 }

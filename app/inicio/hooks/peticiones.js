@@ -1,5 +1,5 @@
 import { mensajes } from "../../../hooks/mensajes.js";
-const apiUrl = "https://plantatech.ultrasoftware.pro/api/";
+const apiUrl = "http://plat.test/api/"; //cambiar para local
 
 let soilChart, tempHumidityChart, lightChart;
 
@@ -213,7 +213,7 @@ function actualizarLecturasActuales(lectura) {
 
     // ACTUALIZAR ALERTAS Y RECOMENDACIONES
     const alertContainer = document.getElementById('alertas-contenedor');
-    alertContainer.innerHTML = ''; // Limpiar
+    alertContainer.innerHTML = '';
 
     // Humedad del suelo
     if (soilHumidity < 40) {
@@ -325,3 +325,57 @@ function actualizarLecturasActuales(lectura) {
             </div>
         </div>`;
 }
+
+
+$(document).ready(function () {
+    $('#tablaLecturas').DataTable({
+        language: {
+            url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
+        },
+        responsive: true,
+        dom: '<"top"lf>rt<"bottom"ip><"clear">',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+});
+
+$(function(){
+    traerLecturas();
+});
+const traerLecturas = () => {
+    let correo = localStorage.getItem('correo');
+    let datos = {
+        "correo":correo
+    };
+    $.ajax({
+        url: apiUrl + "obtener_lecturas",
+        method: "POST",
+        data: JSON.stringify(datos),
+        contentType: "application/json",
+        dataType: "json",
+        success: function (respuesta) {
+            console.log(respuesta.datos);
+            if (respuesta.status === true && Array.isArray(respuesta.datos)) {
+                const tabla = $('#tablaLecturas').DataTable();
+                tabla.clear();
+
+                const filas = respuesta.datos.map(lectura => [
+                    lectura.nivel_luz,
+                    lectura.humedad_aire,
+                    lectura.temperatura,
+                    lectura.humedad_suelo,
+                    lectura.hora_registro
+                ]);
+
+                tabla.rows.add(filas).draw();
+            } else {
+                console.warn("Respuesta inesperada:", respuesta);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("Estado:", status, "Error:", error);
+        }
+    });
+};
+

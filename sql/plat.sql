@@ -36,7 +36,7 @@ CREATE TABLE `lecturas` (
   `hora_registro` time NOT NULL DEFAULT '00:00:00',
   `fecha_registro` date DEFAULT NULL,
   `id_usuario` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `lecturas`
@@ -63,7 +63,7 @@ CREATE TABLE `usuario` (
   `token` varchar(300) DEFAULT NULL,
   `fecha_sesion` timestamp NULL DEFAULT NULL,
   `acepto_terminos` enum('rechazo','aceptado') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Volcado de datos para la tabla `usuario`

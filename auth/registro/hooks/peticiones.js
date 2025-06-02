@@ -1,6 +1,7 @@
 import { mensajes } from "../../../hooks/mensajes.js";
-const apiUrl = "https://plantatech.ultrasoftware.pro/api/"; //cambiar para el hosting
+//const apiUrl = "https://plantatech.ultrasoftware.pro/api/"; //cambiar para el hosting
 
+const apiUrl = "http://plat.test/api/"; //cambiar para local
 
 export const registrarUsuario = (datos) =>{
     $.ajax({

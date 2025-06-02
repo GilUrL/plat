@@ -14,14 +14,15 @@ verificarSesion();
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
-    <!-- Barra de Navegación Mejorada -->
+    <!-- Barra de Navegac -->
     <nav class="navbar navbar-plant navbar-expand-lg navbar-dark sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand navbar-brand-plant" href="#">
@@ -51,61 +52,6 @@ verificarSesion();
                         <i class="bi bi-search search-icon"></i>
                         <input class="form-control search-input" type="search" placeholder="Buscar planta...">
                     </div>
-
-                    <!-- <div class="dropdown me-3">
-                        <a class="btn btn-link position-relative p-0" href="#" role="button" data-bs-toggle="dropdown">
-                            <i class="bi bi-bell text-white fs-5"></i>
-                            <span class="notification-badge badge rounded-pill">3</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-plant dropdown-menu-end">
-                            <li>
-                                <h6 class="dropdown-header">Notificaciones</h6>
-                            </li>
-                            <li>
-                                <a class="dropdown-item dropdown-item-plant" href="#">
-                                    <div class="d-flex">
-                                        <div class="me-2 text-danger">
-                                            <i class="bi bi-droplet"></i>
-                                        </div>
-                                        <div>
-                                            <small>Hace 30 min</small>
-                                            <p class="mb-0">Humedad del suelo baja</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item dropdown-item-plant" href="#">
-                                    <div class="d-flex">
-                                        <div class="me-2 text-success">
-                                            <i class="bi bi-thermometer-sun"></i>
-                                        </div>
-                                        <div>
-                                            <small>Hace 2 horas</small>
-                                            <p class="mb-0">Temperatura estable</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item dropdown-item-plant" href="#">
-                                    <div class="d-flex">
-                                        <div class="me-2 text-warning">
-                                            <i class="bi bi-lightbulb"></i>
-                                        </div>
-                                        <div>
-                                            <small>Hoy, 08:15</small>
-                                            <p class="mb-0">Luz solar detectada</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item dropdown-item-plant text-center" href="#">Ver todas</a></li>
-                        </ul>
-                    </div> -->
 
                     <div class="dropdown">
                         <a class="d-flex align-items-center text-decoration-none dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
@@ -163,7 +109,7 @@ verificarSesion();
                         <div>
                             <h5 class="fw-bold mb-3"><i class="bi bi-sun me-2"></i>Nivel de Luz</h5>
                             <div class="d-flex align-items-end">
-                                <span class="sensor-value" id="light-value">850</span>
+                                <span class="sensor-value" id="light-value">0</span>
                                 <span class="sensor-unit mb-2 ms-1">lux</span>
                             </div>
                             <div class="mt-2">
@@ -189,7 +135,7 @@ verificarSesion();
                         <div>
                             <h5 class="fw-bold mb-3"><i class="bi bi-cloud-rain me-2"></i>Humedad Aire</h5>
                             <div class="d-flex align-items-end">
-                                <span class="sensor-value" id="air-humidity-value">65</span>
+                                <span class="sensor-value" id="air-humidity-value">0</span>
                                 <span class="sensor-unit mb-2 ms-1">%</span>
                             </div>
                             <div class="mt-2">
@@ -215,7 +161,7 @@ verificarSesion();
                         <div>
                             <h5 class="fw-bold mb-3"><i class="bi bi-thermometer me-2"></i>Temperatura</h5>
                             <div class="d-flex align-items-end">
-                                <span class="sensor-value" id="temperature-value">22.5</span>
+                                <span class="sensor-value" id="temperature-value">0</span>
                                 <span class="sensor-unit mb-2 ms-1">°C</span>
                             </div>
                             <div class="mt-2">
@@ -260,8 +206,6 @@ verificarSesion();
                 </div>
             </div>
         </div>
-        <button id="btnExportarPDF" class="btn btn-danger">Exportar a PDF</button>
-
         <!-- Gráficos -->
         <div class="row g-4">
             <!-- Gráfico de Humedad del Suelo -->
@@ -303,14 +247,37 @@ verificarSesion();
                     <div id="alertas-contenedor"></div> <!-- Aquí se insertarán dinámicamente las alertas -->
                 </div>
             </div>
+            <div class="container my-4">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="tablaLecturas" class="table table-striped table-bordered" style="width:100%">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Nivel de Luz</th>
+                                    <th>Humedad de Aire</th>
+                                    <th>Temperatura</th>
+                                    <th>Humedad Suelo </th>
+                                    <th>Hora Lectura </th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
     <script src="../../assets/jquery/jquery.js"></script>
 
-    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <!-- Bootstrap 5  -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
     <script type="module" src="./hooks/peticiones.js"></script>
 </body>
 

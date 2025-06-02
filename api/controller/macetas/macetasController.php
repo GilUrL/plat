@@ -25,10 +25,14 @@ class MacetasController extends MacetasModel
             case 'obtener_lecturas':
                 $this->obtenerLecturas();
                 break;
+            case 'obtener_lecturas_tabla':
+                $this->obtenerLecturasTabla();
+                break;
             default:
                 http_response_code(404);
                 echo json_encode(["error" => "Petición no reconocida"]);
                 break;
+
         }
     }
 
@@ -68,5 +72,22 @@ class MacetasController extends MacetasModel
         }
         convertirJSON($res);
     }
-
+    private function obtenerLecturasTabla()
+    {
+        $lectura = $this->traerLecturaTabla();
+        if ($lectura) {
+            $res = [
+                "status" => $lectura['status'] ?? "no se encontro status del model",
+                "msg" => $lectura['msg'] ?? "no se encontro mensaje del model",
+                "datos" => $lectura['datos'] ?? "model no proporciono datos"
+            ];
+        } else {
+            $res = [
+                "status" => $lectura['status'] ?? "no se encontro status del model",
+                "msg" => $lectura['msg'] ?? "no se encontro mensaje del model",
+                "datos" => $lectura['datos'] ?? "model no proporciono datos"
+            ];
+        }
+        convertirJSON($res);
+    }
 }
